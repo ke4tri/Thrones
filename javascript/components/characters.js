@@ -1,3 +1,4 @@
+import {printToDom} from '../helpers/util.js'
 const characters = [
     {
         name:'Jon Snow', 
@@ -19,8 +20,26 @@ const characters = [
         house:'Lannister',
         image:'https://amp.thisisinsider.com/images/59a5dd9cb065da49008b4878-750-563.png'
     }
-
+    
 ]
 
+const characterBuilder = () => {
+    let domString = '';
+    characters.forEach((character) => {
+        domString += `<h1>${character.name}</h1>`
+        
+        //         <div class="card" style="width: 18rem;">
+        // <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        // <div class="card-body">
+        // <h5 class="card-title">Card title</h5>
+        // <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        // <a href="#" class="btn btn-primary">Go somewhere</a>
+        // </div>
+</div
+            
+    });
+    printToDom(domString, 'characters');
+        
+};
 
-export{characters}
+export{characterBuilder}
