@@ -1,4 +1,7 @@
-import {characters} from './components/characters.js'
+import {characterBuilder} from './components/characters.js'
 
+const initializeApp = () => {
+    characterBuilder()
+}
 
-console.log(characters)
+initializeApp();
