@@ -1,4 +1,5 @@
 import { printToDom } from "../helpers/util.js";
+import {detailsBuilder} from "./detail.js";
 
 const characters = [
   {id:'character1', name: 'John Snow', house: 'Stark', imageUrl: 'https://vignette.wikia.nocookie.net/gameofthrones/images/a/a5/Profile-JonSnow-707.png/revision/latest?cb=20170828030553'},
@@ -10,7 +11,8 @@ const characters = [
 const characterClick = (e) => {
   const characterId = e.target.closest('.character-card').id;//find the closest class (.charater-card) to what you clicked 
   const currentCharacter = characters.find(x => x.id === characterId);// find the id from jon that equals characterId
-  console.log('currentCharacter', currentCharacter);
+  detailsBuilder(currentCharacter);
+  // console.log('currentCharacter', currentCharacter);
 };
 
 const createEvents = () => {
