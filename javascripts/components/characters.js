@@ -7,11 +7,14 @@ const setCharacters = (newArray) => {
   characters = newArray;
 };
 
+const getCharacterz = () => {
+  return characters;
+};
+
 const characterClick = (e) => {
-  const characterId = e.target.closest('.character-card').id;//find the closest class (.charater-card) to what you clicked 
-  const currentCharacter = characters.find(x => x.id === characterId);// find the id from jon that equals characterId
+  const characterId = e.target.closest('.character-card').id;
+  const currentCharacter = characters.find(x => x.id === characterId);
   detailsBuilder(currentCharacter);
-  // console.log('currentCharacter', currentCharacter);
 };
 
 const createEvents = () => {
@@ -21,13 +24,30 @@ const createEvents = () => {
   }
 };
 
-const charactersBuilder = () => {
+const sortPeople = (e) => {
+  const house = e.target.id;
+  if(house === 'All'){
+    charactersBuilder(characters);
+  } else {
+    const filteredPeeps = characters.filter(x => x.house === house);
+    charactersBuilder(filteredPeeps);
+  }
+};
+
+const sortEvents = () => {
+const allButton = document.getElementById('All');
+const starkButton = document.getElementById('Stark');
+allButton.addEventListener('click', sortPeople);
+starkButton.addEventListener('click', sortPeople);
+};
+
+const charactersBuilder = (charactersArray) => {
   let domString = '';
-  characters.forEach((character) => {
-    domString += `<div class="col-2 character-card " id="${character.id}">`
+  charactersArray.forEach((character) => {
+    domString += `<div class="col-2 character-card" id="${character.id}">`
     domString +=   `<div class="card">`;
     domString +=    `<img class="card-img-top" src="${character.imageUrl}" alt="${character.name}">`;
-    domString +=    `<div class="card-body p-2">`;
+    domString +=    `<div class="card-body">`;
     domString +=      `<h5 class="card-title">${character.name}</h5>`;
     domString +=    `</div>`;
     domString +=  `</div>`;
@@ -37,4 +57,4 @@ const charactersBuilder = () => {
   createEvents();
 };
 
-export {charactersBuilder,setCharacters};
+export {charactersBuilder, setCharacters, getCharacterz, sortEvents};
